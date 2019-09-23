@@ -25,7 +25,7 @@ public class Orange{
 		System.out.println(carotte.getPrix());
 		Orange salsifi=new Orange("Le string de Tristan",-8);
 		System.out.println(salsifi.getPrix());
-		
+		//J'aime ton saucisson.
 		
 	}
 }
