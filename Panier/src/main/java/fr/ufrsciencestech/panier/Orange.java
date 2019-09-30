@@ -1,3 +1,8 @@
+package fr.ufrsciencestech.panier;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Orange{
 	private double prix;
 	private String origine;
@@ -17,8 +22,31 @@ public class Orange{
 	{
 		return this.origine;
 	}
+        
+        public void setPrix(int prix)
+        {
+            this.prix=prix;
+        }
+        public void setOrigine(String origine)
+        {
+            this.origine=origine;
+        }
+        
+        public Orange (int prix,String origine)
+        {
+            this.setPrix(prix);
+            this.setOrigine(origine);
+            
+        }
+        
+        public Orange ()
+        {
+            this.setPrix(5000);
+            this.setOrigine("Ludostan");
+            
+        }
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Orange patate=new Orange("Le string de Ludo",50);
 		System.out.println(patate.getOrigine());
 		Orange carotte=new Orange("Le string de Sarah",5000);
@@ -27,5 +55,10 @@ public class Orange{
 		System.out.println(salsifi.getPrix());
 		//J'aime ton saucisson.
 		
-	}
+	}*/
+        
+        public String toString()
+        {
+            return "L'orange coute " + this.getPrix() + " et vient de " + this.getOrigine();
+        }
 }

@@ -1,9 +1,11 @@
+package fr.ufrsciencestech.panier;
+
 import java.util.ArrayList;
 
 public class Panier
 {
-	public ArrayList<Orange> liste;
-	public int tailleMaxPanier;
+	private ArrayList<Orange> liste;
+	private int tailleMaxPanier;
 	public Panier(int tailleMax)
 	{
 		this.liste=new ArrayList<Orange>();
@@ -24,6 +26,11 @@ public class Panier
 	{
 		return this.liste.size();
 	}
+        
+        public ArrayList<Orange> getListeOrange()
+        {
+            return this.liste;
+        }
 	
 	public boolean estVide()
 	{
@@ -48,6 +55,26 @@ public class Panier
 			return true;
 		}
 	}
+        
+        public boolean retire()
+        {
+            if(this.estVide()){
+                System.out.println("Le panier est déjà vide.");
+                return false;
+            }
+            this.getListeOrange().remove(this.getNbFruitsPanier()-1);
+            return true;
+        }
+        
+       /* public void boycottOrigin(String origine)
+        {
+            for (int i=0;i<this.getNbFruitsPanier();i++)
+            {
+                if(this.getListeOrange().get(i).getOrigine().equals(origine)){
+                    this.retire();
+                }
+            }
+        }*/
 	
 	public static void main(String[] args) {
 		Panier sac = new Panier(5);
