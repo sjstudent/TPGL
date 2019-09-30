@@ -19,10 +19,6 @@ public class VueGraphique extends javax.swing.JFrame {
     
     public VueGraphique() {
         initComponents();
-    }
-    
-    public void initComponents()
-    {
         panier=new Panier(10); 
         jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
     }
