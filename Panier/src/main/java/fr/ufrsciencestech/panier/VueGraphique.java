@@ -21,6 +21,10 @@ public class VueGraphique extends javax.swing.JFrame {
         initComponents();
         panier=new Panier(10); 
         jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
+        this.getJButton1().setName("Plus");
+        this.getJButton2().setName("Moins");
+        this.pack();
+        this.setVisible(true);
     }
     
     /**
@@ -122,6 +126,22 @@ public class VueGraphique extends javax.swing.JFrame {
                 new VueGraphique().setVisible(true);
             }
         });
+    }
+    
+    public javax.swing.JButton getJButton1()
+    {
+        return this.jButton1;
+    }
+    
+    public javax.swing.JButton getJButton2()
+    {
+        return this.jButton2;
+    }
+    
+    public void ajoutControler(Controler c)
+    {
+        this.getJButton1().addActionListener(c);
+        this.getJButton2().addActionListener(c);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

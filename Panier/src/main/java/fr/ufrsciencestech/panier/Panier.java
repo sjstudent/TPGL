@@ -1,8 +1,9 @@
 package fr.ufrsciencestech.panier;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Panier
+public class Panier extends Observable
 {
 	private ArrayList<Orange> liste;
 	private int tailleMaxPanier;
@@ -52,6 +53,8 @@ public class Panier
 		else
 		{
 			this.liste.add(o);
+                        setChanged();
+                        notifyObservers();
 			return true;
 		}
 	}
@@ -63,6 +66,8 @@ public class Panier
                 return false;
             }
             this.getListeOrange().remove(this.getNbFruitsPanier()-1);
+            setChanged();
+            notifyObservers();
             return true;
         }
         
