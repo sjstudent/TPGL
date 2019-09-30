@@ -76,7 +76,7 @@ public class Panier
             }
         }*/
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Panier sac = new Panier(5);
 		Orange patate=new Orange("Le char de Ludo",50);
 		Orange carotte=new Orange("Le char de Sarah",5000);
@@ -91,7 +91,7 @@ public class Panier
 		sac.ajoute(carotte);
 		System.out.println(sac.estPlein());
 		
-	}
+	}*/
 	
 	
 }
