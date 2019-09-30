@@ -10,6 +10,7 @@ package fr.ufrsciencestech.panier;
  * @author sj063533
  */
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,7 +31,7 @@ public class Controler implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().getName().equals("Plus")){
+        if(((Component)e.getSource()).getName().equals("Plus")){
             panier.ajoute(new Orange (1457,"Luluberludo"));
         }
         else{panier.retire();}
