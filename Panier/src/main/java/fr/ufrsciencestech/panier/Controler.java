@@ -13,6 +13,8 @@ package fr.ufrsciencestech.panier;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controler implements ActionListener{
 
@@ -32,7 +34,11 @@ public class Controler implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(((Component)e.getSource()).getName().equals("Plus")){
-            panier.ajoute(new Orange (1457,"Luluberludo"));
+            try {
+                panier.ajoute(new Orange ("Luluberludo",1457));
+            } catch (PanierPleinException ex) {
+                Logger.getLogger(Controler.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else{panier.retire();}
     }

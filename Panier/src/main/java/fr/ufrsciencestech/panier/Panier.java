@@ -43,19 +43,17 @@ public class Panier extends Observable
 		return this.getNbFruitsPanier()==this.tailleMaxPanier;
 	}
 	
-	public boolean ajoute (Orange o)
+	public void ajoute (Orange o) throws PanierPleinException
 	{
 		if(this.estPlein())
 		{
-			System.out.println("Le panier est plein.");
-			return false;
+			throw new PanierPleinException();
 		}
 		else
 		{
 			this.liste.add(o);
                         setChanged();
                         notifyObservers();
-			return true;
 		}
 	}
         
@@ -69,6 +67,16 @@ public class Panier extends Observable
             setChanged();
             notifyObservers();
             return true;
+        }
+        
+        public float getPrix()
+        {
+            float total=0;
+            for(int i=0;i<this.getNbFruitsPanier();i++)
+            {
+                total+=this.getListeOrange().get(i).getPrix();
+            }
+            return total;
         }
         
        /* public void boycottOrigin(String origine)

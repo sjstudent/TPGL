@@ -32,12 +32,12 @@ public class Orange{
             this.origine=origine;
         }
         
-        public Orange (int prix,String origine)
+        /*public Orange (int prix,String origine)
         {
             this.setPrix(prix);
             this.setOrigine(origine);
             
-        }
+        }*/
         
         public Orange ()
         {

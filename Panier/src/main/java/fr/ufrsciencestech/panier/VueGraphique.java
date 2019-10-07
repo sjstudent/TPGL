@@ -5,6 +5,9 @@
  */
 package fr.ufrsciencestech.panier;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sj063533
@@ -84,7 +87,11 @@ public class VueGraphique extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        panier.ajoute(new Orange());
+        try {
+            panier.ajoute(new Orange());
+        } catch (PanierPleinException ex) {
+            Logger.getLogger(VueGraphique.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
