@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*//*<3 Sarah <3*/
 package fr.ufrsciencestech.panier;
 
 import java.util.ArrayList;
@@ -61,20 +60,6 @@ public class PanierTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of getTailleMaxPanier method, of class Panier.
-     */
-    @Test
-    public void testGetTailleMaxPanier() {
-        System.out.println("getTailleMaxPanier");
-        Panier instance = null;
-        int expResult = 0;
-        int result = instance.getTailleMaxPanier();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
     @Test
     public void testGetPrixPanierVide(){
@@ -104,16 +89,16 @@ public class PanierTest {
     public void testAjoutePanierVide() throws PanierPleinException {
         p_vide3.ajoute(mock_o1);
         assertTrue(p_vide3.getNbFruitsPanier()==1); 
-        assertEquals(p_vide3.getListeOrange().get(0),mock_o1);
-        assertTrue(p_vide3.getListeOrange().get(0).getPrix()==0.50);
+        assertEquals(p_vide3.getListeFruitSimple().get(0),mock_o1);
+        assertTrue(p_vide3.getListeFruitSimple().get(0).getPrix()==0.50);
     }
     
     @Test
     public void testAjoutePanierPresquePlein() throws PanierPleinException {
         p_presque_plein3.ajoute(mock_o1);
         assertTrue(p_presque_plein3.getNbFruitsPanier()==3); 
-        assertEquals(p_presque_plein3.getListeOrange().get(2),mock_o1);
-        assertTrue(p_presque_plein3.getListeOrange().get(2).getPrix()==0.50);
+        assertEquals(p_presque_plein3.getListeFruitSimple().get(2),mock_o1);
+        assertTrue(p_presque_plein3.getListeFruitSimple().get(2).getPrix()==0.50);
     }
     @Test (expected=PanierPleinException.class)
     public void testAjoutePanierPlein() throws PanierPleinException {

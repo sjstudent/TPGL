@@ -5,11 +5,11 @@ import java.util.Observable;
 
 public class Panier extends Observable
 {
-	private ArrayList<Orange> liste;
+	private ArrayList<FruitSimple> liste;
 	private int tailleMaxPanier;
 	public Panier(int tailleMax)
 	{
-		this.liste=new ArrayList<Orange>();
+		this.liste=new ArrayList<FruitSimple>();
 		this.tailleMaxPanier=tailleMax;
 	}
 	
@@ -28,7 +28,7 @@ public class Panier extends Observable
 		return this.liste.size();
 	}
         
-        public ArrayList<Orange> getListeOrange()
+        public ArrayList<FruitSimple> getListeFruitSimple()
         {
             return this.liste;
         }
@@ -63,7 +63,7 @@ public class Panier extends Observable
                 System.out.println("Le panier est déjà vide.");
                 return false;
             }
-            this.getListeOrange().remove(this.getNbFruitsPanier()-1);
+            this.getListeFruitSimple().remove(this.getNbFruitsPanier()-1);
             setChanged();
             notifyObservers();
             return true;
@@ -74,7 +74,46 @@ public class Panier extends Observable
             float total=0;
             for(int i=0;i<this.getNbFruitsPanier();i++)
             {
-                total+=this.getListeOrange().get(i).getPrix();
+                total+=this.getListeFruitSimple().get(i).getPrix();
+            }
+            return total;
+        }
+        
+        public int getNbOrange()
+        {
+            int total=0;
+            for(int i=0;i<this.getNbFruitsPanier();i++)
+            {
+                if (this.getListeFruitSimple().get(i) instanceof Orange)
+                {
+                    total++;
+                }
+            }
+            return total;
+        }
+        
+        public int getNbCerise()
+        {
+            int total=0;
+            for(int i=0;i<this.getNbFruitsPanier();i++)
+            {
+                if (this.getListeFruitSimple().get(i) instanceof Cerise)
+                {
+                    total++;
+                }
+            }
+            return total;
+        }
+        
+        public int getNbBanane()
+        {
+            int total=0;
+            for(int i=0;i<this.getNbFruitsPanier();i++)
+            {
+                if (this.getListeFruitSimple().get(i) instanceof Banane)
+                {
+                    total++;
+                }
             }
             return total;
         }
