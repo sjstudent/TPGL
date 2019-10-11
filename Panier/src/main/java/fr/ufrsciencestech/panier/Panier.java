@@ -43,7 +43,7 @@ public class Panier extends Observable
 		return this.getNbFruitsPanier()==this.tailleMaxPanier;
 	}
 	
-	public void ajoute (Orange o) throws PanierPleinException
+	public void ajoute (FruitSimple o) throws PanierPleinException
 	{
 		if(this.estPlein())
 		{
