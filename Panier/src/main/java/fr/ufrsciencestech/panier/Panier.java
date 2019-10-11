@@ -43,7 +43,7 @@ public class Panier extends Observable
 		return this.getNbFruitsPanier()==this.tailleMaxPanier;
 	}
 	
-	public void ajoute (Orange o) throws PanierPleinException
+	public void ajoute (FruitSimple o) throws PanierPleinException
 	{
 		if(this.estPlein())
 		{
@@ -116,6 +116,21 @@ public class Panier extends Observable
                 }
             }
             return total;
+        }
+        public String toString()
+        {
+            String s="";
+            s+=this.getNbFruitsPanier() + " Fruits\n";
+            s+=this.getNbOrange() + " Oranges de France\n";
+            s+=this.getNbBanane() + " Bananes de France\n";
+            s+=this.getNbCerise() + " Cerises de France\n";
+           /* for (int i =0; i< liste.size();i++)
+            {
+                s+= liste.get(i).toString();
+                s+="\n";
+            }*/
+            return s;
+            
         }
         
        /* public void boycottOrigin(String origine)

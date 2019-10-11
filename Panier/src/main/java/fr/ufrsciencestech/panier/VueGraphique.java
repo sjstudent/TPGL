@@ -5,6 +5,7 @@
  */
 package fr.ufrsciencestech.panier;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,11 +23,11 @@ public class VueGraphique extends javax.swing.JFrame {
     
     public VueGraphique() {
         initComponents();
-        panier=new Panier(10); 
-        jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
+        panier=new Panier(10);
         this.getJButton1().setName("Plus");
         this.getJButton2().setName("Moins");
         this.pack();
+        jTextArea1.setText((panier.toString()));
         this.setVisible(true);
     }
     
@@ -39,11 +40,17 @@ public class VueGraphique extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(3, 1));
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 2));
 
         jButton1.setText("+");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +58,23 @@ public class VueGraphique extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Orange", "Banane", "Cerise" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1);
+
+        getContentPane().add(jPanel1);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1);
 
         jButton2.setText("-");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -58,47 +82,58 @@ public class VueGraphique extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jTextField1.setText("jTextField1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jButton2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            panier.ajoute(new Orange());
+           if(jComboBox1.getSelectedIndex()==0)
+        {
+            try 
+            {
+                panier.ajoute(new Orange());
+            } 
+            catch (PanierPleinException ex) 
+            {
+                Logger.getLogger(VueGraphique.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+       else if (jComboBox1.getSelectedIndex()==1)
+        {
+            try 
+            { 
+          
+            panier.ajoute(new Banane());
+            }
+            catch (PanierPleinException ex) {
+            Logger.getLogger(VueGraphique.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           }
+           else if (jComboBox1.getSelectedIndex()==2)
+           {
+               try {
+            panier.ajoute(new Cerise());
         } catch (PanierPleinException ex) {
             Logger.getLogger(VueGraphique.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
+       
+           }
+         jTextArea1.setText(panier.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         panier.retire();
-        jTextField1.setText(Integer.toString(panier.getNbFruitsPanier()));
+        jTextArea1.setText((panier.toString()));
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+  
+    
+        
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +189,9 @@ public class VueGraphique extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
